@@ -65,7 +65,7 @@ for epoch in range(num_epochs):
     model.train()
     running_loss = 0.0
     for images, labels in train_loader:
-        images, labels = images.to(device), labels.to(device)  # Move data to GPU
+        images, labels = images.to(device), labels.to(device)  
 
         optimizer.zero_grad()
         outputs = model(images)
@@ -83,7 +83,7 @@ for epoch in range(num_epochs):
     val_loss = 0.0
     with torch.no_grad():
         for images, labels in val_loader:
-            images, labels = images.to(device), labels.to(device)  # Move data to GPU
+            images, labels = images.to(device), labels.to(device)  
 
             outputs = model(images)
             loss = criterion(outputs, labels)
@@ -109,7 +109,7 @@ correct = 0
 total = 0
 with torch.no_grad():
     for images, labels in test_loader:
-        images, labels = images.to(device), labels.to(device)  # Move data to GPU
+        images, labels = images.to(device), labels.to(device) 
 
         outputs = model(images)
         _, predicted = torch.max(outputs.data, 1)
@@ -131,10 +131,10 @@ def imshow(img):
 # Getting a batch of test images
 dataiter = iter(test_loader)
 images, labels = dataiter.next()
-images, labels = images.to(device), labels.to(device)  # Move data to GPU
+images, labels = images.to(device), labels.to(device)  
 
 # Printing images and labels
-imshow(torchvision.utils.make_grid(images.cpu()))  # Move images to CPU for display
+imshow(torchvision.utils.make_grid(images.cpu())) 
 print('GroundTruth: ', ' '.join('%5s' % labels[j] for j in range(batch_size)))
 
 # Predicting the labels
